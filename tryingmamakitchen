@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>| The Trying Mama's Kitchen Table |</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="template1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Base font styling */
+    body, p, aside, section, article, nav, div, footer {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, h1, h2, h3 {
+      font-family: 'Sevillana', cursive;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FFF7A8;
+      font-size: 100%;
+    }
+
+    #wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: lightgoldenrodyellow;
+    }
+
+    header {
+      text-align: center;
+      height: 200px;
+      width: 100%;
+      padding: 20px;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      margin-top: 0;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      color: #FFD154;
+      font-weight: 90%;
+      font-size: 3em;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+      margin: 0 0 1em 0;
+    }
+
+    /* Core Styling */
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Reset basics */
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Top-level nav iten */
+    nav li {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Sub-menu hidden by default */
+    .sub-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffe6ec;
+      border: 1px solid #ccc;
+      padding: 0;
+      min-width: 180px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    /* Show sub-menu on hover */
+    nav li:hover .sub-menu {
+      display:block;
+    }
+
+    nav a {
+      text-decoration: none;
+      padding: 10px 15px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      border-radius: 5px;
+    }
+
+    /* Sub-menu items */
+    .sub-menu li {
+      padding: 10px 15px;
+    }
+
+    .sub-menu a {
+      color: #333;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s ease;
+    }
+
+    /* Hover effect */
+    .sub-menu a:hover {
+      background-color: #ffe6ec;
+    }
+
+    /* Optional icon styling */
+    .nav-icon {
+      margin-right: 5px;
+      font-size: 1em;
+    }
+
+    /* Dropdown basics */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%; /*shows below the parent */
+      left: 0;
+      background-color: yellow;
+      border: 1px solid #yellow;
+      z-index: 999;
+      min-width: 160px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-menu li {
+      padding: 8px 12px;
+    }
+
+    .dropdown-menu li a {
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 0.35em;
+      background-color: #fff;
+      color: #4C5B61;
+    }
+
+    nav ul li a {
+      border-radius: 5px;
+      color: #e1e2dd;
+      text-decoration: none;
+      padding: 0.6em 1.2em 0.6em 1.2em;
+      background-color: #4C5B61;
+      outline: 0;
+    }
+
+    .nav-icon {
+    	width: 16px;
+    	height: 16px;
+    	vertical-align: left;
+    	margin-right: 6px;
+    }
+
+    .sub-menu {
+      margin: 0;
+      padding-left: 0.6em 1.2em 0.6em 1.2em;
+      vertical-align: left;
+    }
+
+    li: hover .sub-menu {
+      display: block;
+      position: absolute;
+      background-color: none;
+      border: 1px solid #ccc;
+      z-index: 1000;
+    }
+
+    .sub-menu li {
+      padding: 8px 12px;
+    }
+
+    .sub-menu a {
+      text-decoration: none;
+      background-color: none;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      background-color: #FFEA95;
+    }
+
+    main {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    aside {
+      max-width: 200px;
+      min-height: 600px;
+      color: #FFD154;
+    }
+
+    /* Sidebar Icon Styling */
+    aside p {
+      padding: 0.5em 1em;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      background-color: #FFF4BF;
+      border-radius: 8px;
+      margin-bottom: 0.8em;
+    }
+
+    aside p img.icon {
+    	width: 20px;
+    	height: 20px;
+    	margin-right: 10px;
+    }
+
+    /* Nav Links with Icons */
+    .nav-icon {
+    	width:16px;
+    	height: 16px;
+    	vertical-align: middle;
+    	margin-right: 6px;
+    }
+
+    .icon {
+    	margin-right: 10px;
+    	font-size:16px;
+    	color: #4C5B61;
+    }
+
+    /* Article Card Style */
+    .card {
+    	background-color: #FFF8DC;
+    	border-radius: 10px;
+    	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    	padding: 1em;
+    	margin-bottom: 1.5em;
+    	overflow: hidden;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    .card img {
+    	width:100%;
+    	height: auto;
+    	border-radius: 8px;
+    	margin-bottom: 0.5em;
+    	box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .card h2 {
+    	margin-top: 0.5em;
+    	font-family: 'Sevillana', cursive;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .spec {
+      margin: -5px 0 10px 0;
+      border-bottom: 1px solid #483838;
+      line-height: 0;
+    }
+    
+    section {
+      flex: 1;
+    }
+
+    article p {
+      padding-left: 1.5em;
+    }
+
+    footer {
+      clear: both;
+      background-color: #FFF054;
+      text-align: center;
+      font-size: 85%;
+      min-height: 100px;
+      padding-top: 3%;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      aside {
+        max-width: 100%;
+        float: none;
+      }
+
+      section {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <img src="chef-1417239_640.png" alt="cheerful-chef">
+    </header>
+    <aside>
+      <h1>The Trying Mama's Kitchen Table</h1>
+      <img src="thetryingmamalogo.jpg" alt="the-trying-mama-logo">
+      <aside>
+          <aside>
+            <section class="content">
+              <ul class="nav">
+                <li><a href="Home">
+                <i class="fa-solid fa-house" alt="Home">Home</i>
+                </a>
+                  <ul class="sub-menu">
+                    <li><a href="Welcome Message"><i class="fa-solid fa-message">Welcome Message</i></a></li>
+                    <li><a href="This Week"><i class="fa-solid fa-calendar-week">This Week</i></a></li>
+                    <li><a href="Mama's Picks"><i class="fa-solid fa-person-breastfeeding">Mama's Picks</i></a></li>
+                    <li><a href="Quick Tips"><i class="faq-solid fa-glasses">Quick Tips</i></a></li>
+                  </ul>
+                </li>
+
+                <li class="nav">
+                  <li><a href="About">
+                  <i class="fa-solid fa-circle-info" alt="about">About</i>
+                  </a>
+                  <ul class="sub-menu">
+                    <li><a href="Our Story"><i class="fa-solid fa-book">Our Story</i></a></li>
+                    <li><a href="Our Vision"><i class="fa-solid fa-eye">Our Vision</i></a></li>
+                    <li><a href="Behind the Brand"><i class="fa-solid fa-copyright">Behind the Brand</i></a></li>
+                    <li><a href="FAQs"><i class="fa-solid fa-person-circle-question">FAQs</i></a></li>
+                  </ul>  
+                </li>
+
+                <li>
+                  <button onclick="showProducts()" alt="Products">Products</button>
+                  <ul class="sub-menu">
+                    <li><a href="Breakfast"><i class="fa-solid fa-egg">Breakfast</i></a></li>
+                    <li><a href="Breads"><i class="fa-solid fa-bread-slice">Breads</i></a></li>
+                    <li><a href="Brunch"><i class="fa-solid fa-egg">Brunch</i></a></li>
+                    <li><a href="Lunch"><i class="fa-solid fa-burger">Lunch</i></a></li>
+                    <li><a href="Appetizers"><i class="fa-solid fa-shrimp">Appetizers</i></a></li>
+                    <li><a href="Dinner"><i class="fa-solid fa-utensils">Dinner</i></a></li>
+                    <li><a href="Sides"><i class="fa-solid fa-carrot">Sides</i></a></li>
+                    <li><a href="Desserts"><i class="fa-solid fa-ice-cream">Desserts</i></a></li>
+                    </ul>
+                  </ul>
+
+                  <a href="Services">
+                  <i class="fa-solid fa-briefcase" alt="services">Services</i>
+                  </a>
+                  <ul class="sub-menu">
+                    <li><a href="styled recipe cards"><i class="fa-solid fa-sin-card">Styled Recipe Cards</i></a></li>
+                    <li><a href="Meal Planning Assistance"><i class="fa-solid fa-kitchen-set">Meal Planning</i></a></li>
+                    <li><a href="E-book Designs"><i class="fa-solid fa-book-bookmark">E-book Designs</i></a></li>
+                    <li><a href="Printables and Planners"><i class="fa-solid fa-print">Printables and Planners</i></a></li>
+                    <li><a href="Branded Blog Post Templates"><i class="fa-solid fa-blog">Branded Blog Post Templates</i></a></li>
+                  </ul>
+                </section>
+          
+                <aside>
+                  <ul>
+                    <li class="nav">
+                  <li><a href="Contact">
+                  <i class="fa-solid fa-address-card" alt="Contact">Contact</i>
+                  </a>
+                  <ul class="sub-menu">
+                    <li><a href="General Inquiries">
+                    <i class="fa-solid fa-question">General Inquiries</i></a></li>
+                    <li><a href="Recipe Requests">
+                    <i class="fa-solid fa-hand">Recipe Requests</i></a></li>
+                    <li><a href="Support">
+                    <i class="fa-solid fa-info">Support</i></a></li>
+                    <li><a href="Phone Number">
+                    <i class="fa-solid fa-phone">Phone Number</i></a></li>
+                    <li><a href="E-mail">
+                    <i class="fa-solid fa-envelope-open-text">E-mail</i></a></li>   
+                    <li><a href="Address">
+                    <i class="fa-solid fa-envelope">Address</i></a></li>
+                  </ul>    
+                </li>
+        </ul>
+      </aside>
+    </aside>
+
+      <section id="breakfast">
+        	<article class="card">
+        		<img src="salmonbagel.jpg" alt="salmon cream cheese bagel" class="card-img">
+        		<h2>Breakfast</h2>
+        		<p>Tasty treats for any morning.</p>
+
+        		<h2>Salmon and Cream Cheese Bagels (high protein)</h2>
+        		
+        		<h3>Prep Details:</h3>
+        		<ul>
+        			<li>Prep Time: 7 mins</li>
+        			<li>Cook Time: 3 mins</li>
+        			<li>Total Time: 10 mins</li>
+        			<li>Serving: 2</li>
+        		</ul>
+        			
+        		<h3>Pickled Cucumber:</h3>
+        		<ul>
+        			<li>2 baby cucumbers</li>
+        			<li>2 tbsp cider vinegar</li>
+        			<li>1 tbsp evoo</li>
+        			<li>pinch salt</li>
+        			<li>pinch black pepper</li>
+                </ul>  
+                
+                <h3>Salmon and Cream Cheese Bagels:</h3>
+                <ul>
+                  <li>2 protein bagel thins (cut in half)</li>
+                  <li>2.5 oz cream cheese</li>
+                  <li>2 (3.5 oz) salmon fillets</li>
+                </ul>
+
+        		<h3>Toppings:</h3>
+        		<ul>
+        			<li>1 c (packed) arugula leaves</li>
+        			<li>2 tbsp hot sauce</li>
+        			<li>1 tbsp mixed black and white sesame seeds</li>
+        			<li>salt to taste</li>
+        			<li>pepper to taste</li>
+        		</ul>		
+        			
+        		<h3>Instructions:</h3>
+        		<ol>
+        			<li>Chop cucumbers into bite-size pieces. Place in a small bowl.</li>
+        			<li>Pour the cider vinegar and oil over the cucumber. Sprinkle with salt and pepper, cider vinegar, evoo, salt, and pepper.</li>
+        			<li>Stir together and put to one side.</li>
+        			<li>Toast bagels to your liking. Place on two plates, spread cream cheese on bagels.</li>
+        			<li>Top with salmon and arugula.</li>
+        			<li>Add cucumber to the plates and pour any of the vingegar/oil mixture left in the bowl over the arugula.</li>
+        			<li>Drizzle hot sauce over the salmon and cucumber.</li>
+        			<li>Sprinkle on sesame seeds, salt, and pepper, then serve.</li>
+        		</ol>
+        	</article>
+        </section>
+          	
+        <section id="breads">		
+        	<article class="card">	
+        		<img src="englishmuffin.jpg" alt="english muffin" class="card-img">	
+          	<h2>Breads</h2>
+          	<p>Warm, delicious, and fluffy options perfect for anytime of the day.</p>
+
+          	<h2>No-Knead Homemade English Muffins (No Oven Needed)</h2>
+
+          	<h3>Prep:</h3>
+          	<ul>
+          		<li>Prep Time: 25 mins</li>
+          		<li>Cook Time: 20 mins</li>
+          		<li>Ferment For: 12 hrs</li>
+          		<li>Total Time: 12 hrs 45 mins</li>
+          	</ul>
+
+          	<h3>Ingredients:</h3>
+          	<ul>
+          		<li>2 1/2 c all-purpose flour</li>
+          		<li>1/4 tsp instant yeast</li>
+          		<li>1/4 tsp salt</li>
+          		<li>2/3 c whole milk</li>
+          		<li>1/2 c water</li>
+          		<li>1 tbsp butter, melted</li>
+          	</ul>
+
+          	<h3>Instructions:</h3>
+          	<ol>
+          		<li>In a medium bowl, add the flour, yeast, and salt. Mix briefly.</li>
+          		<li>In a seperate (microwave safe) container, add milk and water. Pop into the microwave 15-30 seconds or until lukewarm. Stir in melted butter.</li>
+          		<li>Add the wet ingredients to the dry and mix until a dough forms. The dough will be soft and a little sticky.</li>
+          		<li>Once the dough has come together, just scrape down the sides of the bowl and cover tightly with cling wrap and a clean kitchen towel. Let sit at room temperature for 12-18 hours. (if you want to cook muffins at a later time pop the dough into the fridge after 18 hours).</li>
+          	</ol>
+          	
+          	<h3>The Next Day</h3>
+          	<ol>
+          		<li>The dough will have doubled in size. Turn it out onto a floured surface. Cover with cling wrap and a kitchen towl and let rest for 10 minutes.</li>
+          		<li>After resting, the gluten will have relaxed. You can now roll it out to about 2 cm or slightly under 1-inch thick.</li>
+          		<li>Using a 3-inch cookie cutter dusted in flour, cut out rounds and transfer them to another baking tray lined with parchment. Any scraps can be re-rolled and made into another muffin. (At this point, you can place the muffins in the fridge to be cooked off later.)</li>
+          		<li>Loosely cover the muffins with plastic wrap and a tea towel and let them proof for about 40-45 minutes. After 45 minutes, the dough circles will have puffed up a little and will appear rounded. Proceed to cook.
+          		<li>Heat a large nonstick frying pan over a steady, medium to medium-low heat.</li>
+          		<li>Using a flat spatula, carefully place the English muffins onto the heated frying pan about 2 inches apart and cover with a lid. (Makes 8 muffins at a time, so will need to cook off in 2 batches.)</li>
+          		<li>Cook on this side 6-7 minutes. The steam created with the lid on will help the muffins rise and cook through fully. Take extra care when moving muffins to avoid compressing the dough and knocking out bubbles.</li>
+          		<li>Flip over and cook for about another 3 minutes.</li>
+          		<li>Set aside the muffins to cool down on a wire rack before eating them fresh. These muffins toast up really well and make amazing breakfast sandwhiches.</li>
+          		<li>Store for 4 days at room temperature or freeze up to 8 weeks.</li>
+          	</ol>		
+        </article>
+      </section>  
+
+      <section id="brunch">
+        <article class="card">
+          <img src="bloodymary.jpg" alt= "chef" class="card-img">
+          <h2>Brunch</h2>
+          <p>A blend of morning and midday. From fluffy pancakes and savory egg dishes to sandwiches, salads, and perhaps even a mimosa or two.</p>
+
+          <h2>Ketel One Bloody Mary</h2>
+
+          <h3>Ingredients:</h3>
+          <ul>
+            <li>1.5 oz Ketel One Vodka</li>
+            <li>5 oz  Tomato Juice</li>
+            <li>0.3 oz Fresh Lemon Juice</li>
+            <li>5 drops Hot Sauce</li>
+            <li>Pinch Salt and Pepper</li>
+            <li>Garnish with a celery stick</li>
+          </ul>
+          
+          <h3>Equipment</h3>
+          <ul>
+            <li>1 x Highball glass</li>
+            <li>1 x Knife</li>
+            <li>Jigger</li>
+            <li>Chopping board</li>
+            <li>1 x Good quality ice cubes</li>
+          </ul>
+          
+          <h3>Method</h3>
+          <ol>
+            <li>Take a clean Highball glass, add your ingredients over ice, finish with a celery stick</li>
+          </ol>
+        </article>
+      </section>
+        
+      <section id="lunch">
+        <article class="card">
+          <img src="veggieburger.jpg" alt="veggie burger" class="card-img">
+          <h2>Lunch</h2>
+          <p>Midday meals that nourish and inspire-lunch is the perfect pause where simple ingredients meet thoughtful preparation. Whether it's a hearty plate, a light bite, or something on-the-go, this collection celebrates the flavors that fuel your afternoon.</p>
+
+          <h2>Veggie Burgers</h2>
+
+          <h3>Prep:</h3>
+          <ol>
+            <li>Serves: 4</li>
+            <li>Prep Time: 15 mins</li>
+            <li>Cooking Time: 15 mins</li>
+            <li>Ready In: 30 mins</li>
+          </ol>
+          
+          <h3>Ingredients:</h3>
+          <ol>
+            <li>2 c frozen edamame</li>
+            <li>1 c coarsely chopped carrots</li>
+            <li>1/3 c breadcrumbs</li>
+            <li>1/4 c mayonnaise</li>
+            <li>1 large clove garlic, chopped</li>
+            <li>1/8 tsp chipotle chile powder</li>
+            <li>1 tbsp olive oil</li>
+            <li>4 hamburger buns</li>
+          </ol>
+
+          <h3>Directions</h3>
+          <ul>
+            <li>Combine edamame, carrots, and 1 tbsp water in medium microwave-safe bowl. Microwave covered at high until tender, about 5 minutes. Let stand 3 minutes; drain and cool slightly.</li>
+            <li>Put edamame, carrots, breadcrumbes, mayonnaise, garlic, salt, and chipotle chili powder in food processor and process until uniformly ground, scraping down sides of bowl, if needed. Shape into 4 patties.</li>
+            <li>Heat oil in large nonstick skillet over medium heat and cook patties, turning once, until browned, about 8 minutes.</li>
+            <li>Layer veggie burgers with your favorite burger toppings in buns.</li>
+          </ul>
+        </article>
+      </section>
+          
+      <section id="appetizers">
+        <article class="card">
+          <img src="grilled-shrimp-ceviche-00.jpg" alt="grilled shrimp ceviche" class="card-img">
+          <h2>Appetizers</h2>
+          <p>Kick off any gathering with small bites that bring big flavor. These appetizers are crafted to delight-whether you're hosting a casual get-together or setting the tone for a memorable meal. Perfectly portioned and beautifully styled, they offer a little taste of everything.</p>
+
+          <h2>Grilled Shrimp Ceviche</h2>
+
+          <h3>Prep</h3>
+          <ul>
+            <li>Yields: 6 servings</li>
+            <li>Prep Time: 30 mins</li>
+            <li>Cook Time: 6 mins</li>
+            <li>Total Time: 36 mins</li>
+          </ul>
+          
+          <h3>Ingredients:</h3>
+          <ol>
+            <li>For the marinated grilled shrimp:</li>
+            <li>1/3 c vegetable oil</li>
+            <li>1/2 large habanero pepper, seeded and minced</li>
+            <li>3 cloves garlic, minced</li>
+            <li>1 tbsp brown sugar</li>
+            <li>2 tsp smoked paprika</li>
+            <li>1 tsp chili powder</li>
+            <li>1 tsp garlic powder</li>
+            <li>1 tsp onion powder</li>
+            <li>1 tsp oregano</li>
+            <li>1 tsp salt</li>
+            <li>1/2 tsp black pepper</li>
+            <li>1 lb raw jumbo shrimp, 16-20 per pound, peeled and deveined</li>
+            <li>For the remainder of the ceviche:</li>
+            <li>4 roma tomatoes, diced</li>
+            <li>1 c fresh cilantro, chopped</li>
+            <li>1/3 c diced red onion</li>
+            <li>2 tsp minced jalapeno</li>
+            <li>1 clove garlic, minced</li>
+            <li>1 large lime, juiced</li>
+            <li>salt and pepper</li>
+            <li>lime wedges for garnish</li>
+            <li>tortilla chips, to serve</li>
+          </ol>
+          
+        
+          <h3>Directions:</h3>
+          <ul>
+            <li>For the marinated grilled shrimp:</li>
+            <li>In a small bowl with high sides, combine oil, habanero, garlic, brown sugar, smoked paprika, chili powder, garlic powder, onion powder, oregano, salt, and pepper. Use an immersion blender to completely process until there are no sizeable pieces. Place shrimp in a low, wide bowl and pour marinade over. Gently fold to coat evenly. Cover and refrigerate for 1-2 hours.</li>
+            <li>Heat an outdoor grill to medium-high heat (about 475 degrees F). Clean and oil grill grates well. Set shrimp on grates. Grill for about 3 minutes per side, or until shrimp are no longer opaque and have a bit of char. Transfer to a plate to cool.</li>
+            <li>To create the ceviche:</li>
+            <li>In a medium bowl, fold together tomatoes, cilantro, red onion, jalapeno, garlic, and lime juice. Chop the grilled shrimp into 1/2 in or slightly smaller pieces and add to the bowl. Fold again. Taste and add more salt and pepper if needed. Serve with extra lime wedges for squeezing over the top, plus tortilla chips for scooping.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="dinner">
+        <article class="card">
+          <img src="chicken-noodle-casserole.jpg" alt="chicken noodle casserole" class="card-img">
+          <h2>Dinner</h2>
+          <p>Evenings made easy-nourishing plates for busy hearts and hungry bellies.</p>
+
+          <h2>Chicken Noodle Casserole</h2>
+
+          <h3>Prep:</h3>
+          <ul>
+            <li>Prep Time: 10 mins</li>
+            <li>Cook Time: 30 minutes</li>
+            <li>Serves: 6</li>
+          </ul>
+          
+          <h3>Ingredients:</h3>
+          <ul>
+            <li>12 oz egg noodles uncooked</li>
+            <li>4 c canned cooked chicken, chopped liquid saved and set to the side</li>
+            <li>1 10 oz can cream of mushroom soup</li>
+            <li>1 10 oz can cream of chicken soup</li>
+            <li>1/2 c milk</li>
+            <li>1 c shredded cheddar cheese</li>
+            <li>2 c frozen peas</li>
+            <li>8 oz mushrooms chopped</li>
+            <li>1 4 oz can mushrooms, drained</li>
+            <li>1/2 tsp garlic powder</li>
+            <li>1/2 tsp onion powder</li>
+            <li>salt and pepper to taste</li>
+            <li>2 tbsp chopped parsley</li>
+            <li>cooking spray</li>
+          </ul>
+          
+          <h3>Instructions:</h3>
+          <ul>
+            <li>Preheat oven to 350 degrees F. Coat a 9"x13" pan with cooking spray.</li>
+            <li>Cook the egg noodles according to package directions.</li>
+            <li>In a large bowl combine the noodles, chicken, soup, milk, cheese, peas, garlic powder, onion powder, salt, and pepper.</li>
+            <li>Place the noodle mixture in the prepared baking dish and cover with foul. Bake for 30 minutes or until heated through. Sprinkle with parsley and serve.</li>
+          </ul>
+        </article>
+      </section>
+      
+      <section id="sides">
+        <article class="card">
+          <img src="macandcheese.jpg" alt="macaroni and cheese" class="card-img">
+          <h2>Sides</h2>
+          <p>The perfect plus-one to any plate-flavorful sides that steal the spotlight.</p>
+
+          <h2>Macaroni and Cheese</h2>
+
+          <h3>Prep:</h3>
+          <ul>
+            <li>Serves: 4</li>
+            <li>Prep Time: 20 mins</li>
+            <li>Cooking Time: 30 mins</li>
+            <li>Ready In: 50 mins</li>
+          </ul>
+          
+          <h3>Ingredients:</h3>
+          <ul>
+            <li>8 oz elbow macaroni</li>
+            <li>1 can condensed cream of mushroom soup</li>
+            <li>2 1/4 c cheddar cheese, divided</li>
+            <li>3/4 c mayonnaise</li>
+            <li>1/2 c 2% milk</li>
+          </ul>
+          
+          <h3>Directions</h3>
+          <ul>
+            <li>Preheat oven to 375 degrees F.</li>
+            <li>Combine all ingredients except 1/2 c cheese in large bowl. Season, if desired with salt and pepper. Turn into 9 in baking dish. Sprinkle with remaining 1/2 c cheese. Bake 30 minutes or until heated through.
+          </ul>
+        </article>
+      </section>
+
+      <section id="Dessert">
+        <article class="card">
+          <img src="bananacream.jpg" alt="banana cream pudding" class id="card-img">
+          <h2>Dessert</h2>
+          <p>Fancy fun wrapped up in one decadent delight</p>
+
+          <h2>Banana Cream Pudding</h2>
+
+          <h3>Prep:</h3>
+          <ul>
+            <li>Prep Time: 15 min</li>
+            <li>Cook: 10 min</li>
+            <li>Yield: 8</li>
+          </ul>
+          
+          <h3>Ingredients</h3>
+          <ul>
+            <li>1 qt milk</li>
+            <li>2 c sugar, plus 1/4 c sugar</li>
+            <li>8 large eggs, separated, whites stored for another use</li>
+            <li>1 tsp banana extract</li>
+            <li>1/3 c bourbon</li>
+            <li>1/2 c cornstarch</li>
+            <li>salt</li>
+            <li>1/2 tsp vanilla extract, plus a splash</li>
+            <li>2 tbsp butter, cut into cubes</li>
+            <li>1 c heavy cream</li>
+            <li>4 large bananas, sliced</li>
+            <li>1 box vanilla wafers</li>
+            <li>1/3 c creme de banana</li>
+          </ul>
+          
+          <h3>Directions</h3>
+          <ul>
+            <li>Scald milk, in a large sauce pot, with a pinch of sugar.</li>
+            <li>In a mixing bowl, add egg yolks, banana extract, bourbon, and 2 c of sugar. Whish together until pale yellow and thickened. Add cornstarch and mix to combine. Very slowly, pour a little of the milk mixture. Once fully incorporated pour the entire mixture back into the pot and place over medium heat. Stir constantly until it comes to a simmer and the mixture thickens enough that it coats the back of a wooden spoon. Remove from heat and add a pinch of salt and vanilla extract, then add butter cubes and stir to make the mixture rich and super glossy.</li>
+            <li>Transfer to a bowl and cover with plastic wrap, pressing the wrap onto the surface so it doesn't form a skin on the surface. Allow to cool.</li>
+            <li>In a large bowl, using a hand mixer, whip the cream with 1/4 c of sugar and a splash of vanilla extract until you have stiff peaks. Set aside.</li>
+            <li>slice bananas and add to pastry cream.</li>
+            <li>Line a smal deep rectangular dish with vanilla wafers. Splash with creme de banana then cover with banana pastry cream. Top with whipped cream and refrigerate until ready to serve.</li>
+          </ul>
+        </article>
+      </section>   
+    </aside>
+  </aside>
+
+    <footer>
+      <p>&copy; 2025 The Trying Mama. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>	
